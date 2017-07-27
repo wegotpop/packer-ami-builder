@@ -1,0 +1,26 @@
+---
+- hosts: all
+  become: true
+  become_user: ubuntu
+  vars:
+    app_base: ~/src
+    app_path: "{{app_base}}/pop-flask-hello-world-master"
+  tasks:
+    - name: Ensures {{ app_base }} dir exists
+      file: path={{ app_base }} state=directory
+    - name: Unpack app
+      unarchive:
+        src: ../files/pop-flask-hello-world-master.zip
+        dest: "{{ app_base }}"
+    - name: Create virtual environment appenv
+      shell: "virtualenv {{ app_path }}/venv"
+    - name: Install app requirements
+      pip:
+        requirements: "{{ app_path }}/requirements.txt"
+        virtualenv: "{{ app_path }}/venv"
+    - name: Start uwsgi service
+      become: yes
+      become_method: sudo
+      systemd:
+          state=started
+          name=app.service

@@ -1,0 +1,23 @@
+---
+- hosts: all
+  become: true
+  become_method: sudo
+  tasks:
+    - name: Install the package "unzip"
+      apt:
+        name: unzip
+    - name: Install the package "uwsgi"
+      apt:
+        name: uwsgi
+    - name: Install the package "pip"
+      apt:
+        name: python-pip
+    - name: Install the package "virtualenv"
+      pip:
+        name: virtualenv
+    - name: Create ubuntu user
+      user: name=ubuntu comment="ubuntu User" groups="sudo,adm"
+    - name: Install uwsgi service
+      copy:
+        src=../files/app.service
+        dest=/etc/systemd/system

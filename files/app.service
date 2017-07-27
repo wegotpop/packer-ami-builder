@@ -1,0 +1,9 @@
+[Unit]
+Description=uWSGI instance to serve myapp
+
+[Service]
+ExecStartPre=-/usr/bin/bash -c 'mkdir -p /run/uwsgi; chown user:ubuntu /run/uwsgi'
+ExecStart=/usr/bin/bash -c 'cd /home/ubuntu/src/pop-flask-hello-world-master; source venv/bin/activate; uwsgi --http :3000 --wsgi-file application.py'
+
+[Install]
+WantedBy=multi-user.target

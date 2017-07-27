@@ -1,0 +1,4 @@
+---
+- hosts: all
+- include: root.yml
+- include: user.yml
