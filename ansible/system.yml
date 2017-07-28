@@ -6,9 +6,6 @@
     - name: Install the package "unzip"
       apt:
         name: unzip
-    - name: Install the package "uwsgi"
-      apt:
-        name: uwsgi
     - name: Install the package "pip"
       apt:
         name: python-pip

@@ -6,6 +6,10 @@
     app_base: ~/src
     app_path: "{{app_base}}/pop-flask-hello-world-master"
   tasks:
+    - name: Install the package "uwsgi"
+      pip:
+        name: uwsgi
+        virtualenv: "{{ app_path }}/venv"
     - name: Ensures {{ app_base }} dir exists
       file: path={{ app_base }} state=directory
     - name: Unpack app
@@ -18,9 +22,3 @@
       pip:
         requirements: "{{ app_path }}/requirements.txt"
         virtualenv: "{{ app_path }}/venv"
-    - name: Start uwsgi service
-      become: yes
-      become_method: sudo
-      systemd:
-          state=started
-          name=app.service

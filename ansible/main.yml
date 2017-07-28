@@ -1,4 +1,5 @@
 ---
 - hosts: all
-- include: root.yml
-- include: user.yml
+- include: system.yml
+- include: app.yml
+- include: service.yml
