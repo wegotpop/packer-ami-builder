@@ -1,5 +1,12 @@
 ---
 - hosts: all
+  become: true
+  become_method: sudo
+  gather_facts: no
+  pre_tasks:
+    - name: Install python2  # https://stackoverflow.com/a/34402816/903994
+http://docs.ansible.com/ansible/latest/intro_installation.html#managed-node-requirements
+      raw: sudo apt-get -y install python-simplejson
 - include: system.yml
 - include: app.yml
 - include: service.yml

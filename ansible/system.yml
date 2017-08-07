@@ -3,17 +3,15 @@
   become: true
   become_method: sudo
   tasks:
-    - name: Install the package "unzip"
+    - name: Install "unzip"
       apt:
         name: unzip
-    - name: Install the package "pip"
+    - name: Install "pip"
       apt:
         name: python-pip
-    - name: Install the package "virtualenv"
+    - name: Install "virtualenv"
       pip:
         name: virtualenv
-    - name: Create ubuntu user
-      user: name=ubuntu comment="ubuntu User" groups="sudo,adm"
     - name: Install uwsgi service
       copy:
         src=../files/app.service
