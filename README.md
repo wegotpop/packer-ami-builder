@@ -36,7 +36,7 @@ To build the flask AMI, navigatate to the project's directory and run:
 If no errrors occured, you can see the artifact created, provisioned with the test flask web server, on [AWS](https://eu-west-1.console.aws.amazon.com/ec2/v2/home?region=eu-west-1#Images:sort=name "AWS"). Do not forget to deregister the the image and delete the snaphot, after you're done with it, as per [instructions](https://www.packer.io/intro/getting-started/build-image.html "Packer instructions").
 
 ## Launch the AMI
-After packer has succeeded, you can launch the AMI and test it out. Go to EC2->AMI (under Developer role) and lanuch it. In its configuration for security groups, add a custom TCP inbound rule, on port 8080. 
+After packer has succeeded, you can launch the AMI and test it out. Go to EC2->AMI (under Developer role) and lanuch it. In its configuration for security groups, add HTTP and HTTPS inbound rules, and a custom TCP inbound rule on port 8080. 
 
 In AWS's [Instances](https://eu-west-1.console.aws.amazon.com/ec2/v2/home?region=eu-west-1#Instances:sort=desc:launchTime "Instances") section, you should be able to get the public IP and connect to it on 8080 in your browser (Please check Known issues #1 before doing so). 
 
