@@ -40,14 +40,6 @@ After packer has succeeded, you can launch the AMI and test it out. Go to EC2->A
 
 In AWS's [Instances](https://eu-west-1.console.aws.amazon.com/ec2/v2/home?region=eu-west-1#Instances:sort=desc:launchTime "Instances") section, you should be able to get the public IP and connect to it on 8080 in your browser (Please check Known issues #1 before doing so). 
 
-## Known issues
-1. Currently, the Ansible's `systemd` module does not seem to work with Packer, or it needs some extra configuration. Could be because of a known [issue](https://github.com/ansible/ansible/pull/23904) with the current version. For that reason, you need to ssh to the instance (follow AWS's Instances "Connect" guide) and manually start the service:
-
-`sudo systemctl start app`
-
-2. As mentioned above, currently, only packer **1.0.2** works for this solution.
-3. Ansible currently only supports **python2**, so this needs to be installed on the remote machine.
-
 ## Development
 To ease development, you can run the ansible playbooks in a virtual machine with Vagrant.
 Just do:
@@ -59,3 +51,11 @@ for a new machine, or
 `vagrant provision`
 
 after the machine has been created.
+
+## Known issues
+1. Currently, the Ansible's `systemd` module does not seem to work with Packer, or it needs some extra configuration. Could be because of a known [issue](https://github.com/ansible/ansible/pull/23904) with the current version. For that reason, you need to ssh to the instance (follow AWS's Instances "Connect" guide) and manually start the service:
+
+`sudo systemctl start app`
+
+2. As mentioned above, currently, only packer **1.0.2** works for this solution.
+3. Ansible currently only supports **python2**, so this needs to be installed on the remote machine.
