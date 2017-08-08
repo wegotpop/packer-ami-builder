@@ -47,3 +47,15 @@ In AWS's [Instances](https://eu-west-1.console.aws.amazon.com/ec2/v2/home?region
 
 2. As mentioned above, currently, only packer **1.0.2** works for this solution.
 3. Ansible currently only supports **python2**, so this needs to be installed on the remote machine.
+
+## Development
+To ease development, you can run the ansible playbooks in a virtual machine with Vagrant.
+Just do:
+
+`vagrant up`
+
+for a new machine, or
+
+`vagrant provision`
+
+after the machine has been created.
