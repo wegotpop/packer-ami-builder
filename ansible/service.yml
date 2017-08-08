@@ -1,8 +1,10 @@
 ---
 - hosts: all
   become: true
+  become_method: sudo
   tasks:
     - name: Start uwsgi service
       systemd:
-          state=started
-          name=app.service
+          state: started
+          name: app
+

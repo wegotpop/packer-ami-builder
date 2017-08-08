@@ -3,7 +3,7 @@ Description=uWSGI instance to serve myapp
 
 [Service]
 ExecStartPre=-/bin/bash -c 'mkdir -p /run/uwsgi; chown user:ubuntu /run/uwsgi'
-ExecStart=/bin/bash -c 'cd /home/ubuntu/src/pop-flask-hello-world-master; source venv/bin/activate; uwsgi -H ./venv --http :3000 --wsgi-file application.py'
+ExecStart=/bin/bash -c 'cd /home/ubuntu/src/pop-flask-hello-world-master; source venv/bin/activate; uwsgi -H ./venv --http :8080 --wsgi-file application.py'
 
 [Install]
 WantedBy=multi-user.target
